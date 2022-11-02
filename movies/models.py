@@ -27,7 +27,7 @@ class Genre(CommonFields):
 
 class Movie(CommonFields):
     tagline = models.CharField("Слоган", max_length=100)
-    poster = models.ImageField('Постер', upload_to='movies/', blank=True)
+    poster = models.ImageField('Постер', upload_to='movies/posters', blank=True)
     year = models.PositiveSmallIntegerField('Год выхода фильма')
     country = models.CharField('Страна', max_length=60)
     actors = models.ManyToManyField(Person, verbose_name='Актеры', related_name='film_actor')
