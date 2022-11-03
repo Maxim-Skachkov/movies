@@ -1,6 +1,8 @@
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator
 from django.db import models
+from django.urls import reverse
+
 from .utils import CommonFields
 # Create your models here.
 
@@ -41,6 +43,8 @@ class Movie(CommonFields):
                                  on_delete=models.SET_NULL)
     is_published = models.BooleanField(default=False)
 
+    def get_absolute_url(self):
+        return reverse('movie', kwargs={'slug': self.url})
     class Meta:
         verbose_name = 'Фильм'
         verbose_name_plural = 'Фильмы'
